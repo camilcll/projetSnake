@@ -69,7 +69,7 @@ function loadLevel(data = null, level = 1) {
     snakeBody = data["snake"]
 
     //direction initiale en fonction de la position de la tte par rapport au corps
-    snakeDir = data["initialD"];
+    snakeDir = DROITE;
 
     //console.log(WORLD);
 
