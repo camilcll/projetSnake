@@ -1,4 +1,4 @@
-const tileSize = 20;
+const tileSize = 40;
 const EMPTY = 0;
 const WALL = 1;
 const FOOD = 2;
