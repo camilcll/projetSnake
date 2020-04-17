@@ -119,12 +119,12 @@ function step() {
 
     if (newHead[0] < 0 || newHead[1] < 0 || newHead[1] >= WORLD[0].length || newHead[0] >= WORLD.length) {
         gameOver = true;
-        console.log("bfrhgfvrbjr");
+        console.log(newHead);
     }
 
     if (!gameOver && !(WORLD[newHead[0]][newHead[1]] == WALL) && !snakeBody.some(element => element[0] == newHead[0] && element[1] == newHead[1])) {
         snakeBody.unshift(newHead);
-        skid = false;
+    
         if (WORLD[newHead[0]][newHead[1]] == EMPTY) {
             snakeBody.pop();
         }
