@@ -65,9 +65,6 @@ function loadLevel(data = null, level = 1) {
     }
 
     snakeBody = data["snake"]
-    for (let snake of snakeBody) {
-        WORLD[snake[0]][snake[1]] = SNAKE;
-    }
 
     //direction initiale en fonction de la position de la tte par rapport au corps
     snakeDir = data["initialD"];
@@ -91,7 +88,6 @@ function drawWorld() {
             if (WORLD[x][y] == EMPTY) ctx.fillStyle = "rgb(100, 100, 100)";
             else if (WORLD[x][y] == WALL) ctx.fillStyle = "rgb(200, 10, 10)";
             else if (WORLD[x][y] == FOOD) ctx.fillStyle = "rgb(10, 10, 200)";
-            else if (WORLD[x][y] == SNAKE) ctx.fillStyle = "rgb(10, 200, 10)";
 
             ctx.strokeRect(x * tileSize, y * tileSize,
                 tileSize, tileSize);
@@ -100,6 +96,16 @@ function drawWorld() {
                 tileSize, tileSize);
         }
     }
+    for (let p of snakeBody) {
+        let x = p[0];
+        let y = p[1];
+        ctx.fillStyle = "rgb(10, 200, 10)";
+        ctx.strokeRect(x * tileSize, y * tileSize,
+            tileSize, tileSize);
+        ctx.fillRect(x * tileSize, y * tileSize,
+            tileSize, tileSize);
+    }
+
 
 }
 
