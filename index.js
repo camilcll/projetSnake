@@ -149,7 +149,7 @@ function step() {
             while (WORLD[x][y] != EMPTY)
             WORLD[x][y] = FOOD;
             score += 10;
-            stepInterval /= 1.33;
+            stepInterval /= 1.15;
             audioCuisse.play();
         }
     }
