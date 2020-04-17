@@ -87,13 +87,14 @@ function drawWorld() {
         for (let y in [...Array(WORLD[x].length).keys()]) {
             if (WORLD[x][y] == EMPTY) ctx.fillStyle = "rgb(100, 100, 100)";
             else if (WORLD[x][y] == WALL) ctx.fillStyle = "rgb(200, 10, 10)";
-            else if (WORLD[x][y] == FOOD) ctx.drawImage(img, x * tileSize, y * tileSize, tileSize, tileSize);
 
             ctx.strokeRect(x * tileSize, y * tileSize,
                 tileSize, tileSize);
 
             ctx.fillRect(x * tileSize, y * tileSize,
                 tileSize, tileSize);
+            if (WORLD[x][y] == FOOD) ctx.drawImage(img, x * tileSize, y * tileSize, tileSize, tileSize);
+
         }
     }
     for (let p of snakeBody) {
