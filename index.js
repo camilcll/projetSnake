@@ -99,15 +99,6 @@ function drawWorld() {
                 tileSize, tileSize);
         }
     }
-    for (let p of snakeBody) {
-        let x = p[0];
-        let y = p[1];
-        ctx.fillStyle = "rgb(10, 200, 10)";
-        ctx.strokeRect(x * tileSize, y * tileSize,
-            tileSize, tileSize);
-        ctx.fillRect(x * tileSize, y * tileSize,
-            tileSize, tileSize);
-    }
 
 }
 
