@@ -13,8 +13,14 @@ var WORLD = null;
 var snakeDir = null;
 var snakeBody = null;
 var key = null;
-
+var score = 0;
 var stepInterval = null;
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+
 
 function loadJSON(url, callback = null) {
     let req = new XMLHttpRequest();
@@ -92,6 +98,16 @@ function drawWorld() {
                 tileSize, tileSize);
         }
     }
+    for (let p of snakeBody) {
+        let x = p[0];
+        let y = p[1];
+        ctx.fillStyle = "rgb(10, 200, 10)";
+        ctx.strokeRect(x * tileSize, y * tileSize,
+            tileSize, tileSize);
+        ctx.fillRect(x * tileSize, y * tileSize,
+            tileSize, tileSize);
+    }
+
 }
 
 function step() {
@@ -107,21 +123,45 @@ function step() {
     if (snakeDir == HAUT) newHead = [snakeBody[0][0], snakeBody[0][1] - 1];
     if (snakeDir == BAS) newHead = [snakeBody[0][0], snakeBody[0][1] + 1];
 
-    if (WORLD[newHead[0]][newHead[1]] == EMPTY || WORLD[newHead[0]][newHead[1]] == FOOD) {
-        snakeBody.unshift(newHead);
-        if (WORLD[newHead[0]][newHead[1]] == EMPTY) {
-            let lastSnake = snakeBody[snakeBody.length - 1];
-            WORLD[lastSnake[0]][lastSnake[1]] = EMPTY;
-            snakeBody.pop();
-        }
-        WORLD[newHead[0]][newHead[1]] = SNAKE;
-    }
-    else {
-        console.log("perdu !");
-        clearInterval(stepInterval);
+    let gameOver = false;
+
+    if (newHead[0] < 0 || newHead[1] < 0 || newHead[1] >= WORLD[0].length || newHead[0] >= WORLD.length) {
+        gameOver = true;
     }
 
-    drawWorld();
+    if (!gameOver && !(WORLD[newHead[0]][newHead[1]] == WALL) && !snakeBody.some(element => element[0] == newHead[0] && element[1] == newHead[1])) {
+        snakeBody.unshift(newHead);
+        skid = false;
+
+        if (WORLD[newHead[0]][newHead[1]] == EMPTY) {
+            snakeBody.pop();
+        }
+        else if (WORLD[newHead[0]][newHead[1]] == FOOD) {
+            WORLD[newHead[0]][newHead[1]] = EMPTY;
+            let x, y;
+            do {
+                x = getRandomInt(WORLD.length);
+                y = getRandomInt(WORLD[0].length);
+            }
+            while (WORLD[x][y] != EMPTY)
+            WORLD[x][y] = FOOD;
+            delay /= 2;
+            score += 10;
+        }
+
+    }
+    else {
+        gameOver = true;
+    }
+
+    if (gameOver) {
+        alert("Game over! Score: " + score);
+    }
+    else {
+        setTimeout(function () { step(); }, delay);
+        drawWorld();
+    }
+
 }
 
 window.addEventListener("load", function (event) {
