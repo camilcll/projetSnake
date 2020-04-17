@@ -24,6 +24,14 @@ body {
     height: 100%;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
+}
+
 button{
     margin: 5em!important;
 }
