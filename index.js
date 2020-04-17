@@ -169,7 +169,9 @@ function step() {
     }
 }
 
-window.addEventListener("load", function (event) {
+document.getElementById("play").addEventListener("click", function (event) {
+    $("#menu").removeClass("d-flex").toggleClass("hidden");
+    $("game").removeClass("hidden").toggleClass("d-flex");
     loadLevel();
 });
 
