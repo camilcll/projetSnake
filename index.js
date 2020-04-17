@@ -145,7 +145,7 @@ function step() {
             }
             while (WORLD[x][y] != EMPTY)
             WORLD[x][y] = FOOD;
-            delay /= 2;
+            stepInterval /= 2;
             score += 10;
         }
 
@@ -158,14 +158,13 @@ function step() {
         alert("Game over! Score: " + score);
     }
     else {
-        setTimeout(function () { step(); }, delay);
+        setTimeout(function () { step(); }, stepInterval);
         drawWorld();
     }
 
 }
 
 window.addEventListener("load", function (event) {
-    console.log("test");
     loadLevel();
 });
 
