@@ -157,7 +157,7 @@ function step() {
         alert("Game over! Score: " + score);
     }
     else {
-        setTimeout(function () { step(); }, delay);
+        setTimeout(function () { step(); }, stepInterval);
         drawWorld();
     }
 }
