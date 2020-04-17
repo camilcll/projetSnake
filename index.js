@@ -145,7 +145,6 @@ function step() {
             }
             while (WORLD[x][y] != EMPTY)
             WORLD[x][y] = FOOD;
-            stepInterval /= 2;
             score += 10;
         }
 
