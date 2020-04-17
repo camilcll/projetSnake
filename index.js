@@ -81,13 +81,13 @@ function drawWorld() {
     canvas.height = WORLD[0].length * tileSize;
     let ctx = canvas.getContext('2d');
 
-    ctx.strokeStyle = "red";
-
+    ctx.strokeStyle = "white";
+    let img = document.getElementById("cuisse");
     for (let x in [...Array(WORLD.length).keys()]) {
         for (let y in [...Array(WORLD[x].length).keys()]) {
             if (WORLD[x][y] == EMPTY) ctx.fillStyle = "rgb(100, 100, 100)";
             else if (WORLD[x][y] == WALL) ctx.fillStyle = "rgb(200, 10, 10)";
-            else if (WORLD[x][y] == FOOD) ctx.fillStyle = "rgb(10, 10, 200)";
+            else if (WORLD[x][y] == FOOD) ctx.drawImage(img, 0, 0, 512, 512, x * tileSize, y * tileSize, tileSize, tileSize);
 
             ctx.strokeRect(x * tileSize, y * tileSize,
                 tileSize, tileSize);
