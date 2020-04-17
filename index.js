@@ -159,7 +159,9 @@ function step() {
 
     
     if (gameOver) {
-        alert("Game over! Score: " + score);
+        $("#game").removeClass("d-flex").toggleClass("hidden");
+        $("#gameOver").removeClass("hidden").toggleClass("d-flex");
+        document.getElementById("score").innerHTML = score;
     }
     else {
         setTimeout(function () { step(); }, stepInterval);
