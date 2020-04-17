@@ -12,6 +12,7 @@ const DROITE = 3;
 var WORLD = null;
 var snakeDir = null;
 var snakeBody = null;
+var skid = false;
 var key = null;
 var score = 0;
 var stepInterval = null;
@@ -132,7 +133,6 @@ function step() {
     if (!gameOver && !(WORLD[newHead[0]][newHead[1]] == WALL) && !snakeBody.some(element => element[0] == newHead[0] && element[1] == newHead[1])) {
         snakeBody.unshift(newHead);
         skid = false;
-
         if (WORLD[newHead[0]][newHead[1]] == EMPTY) {
             snakeBody.pop();
         }
@@ -147,20 +147,19 @@ function step() {
             WORLD[x][y] = FOOD;
             score += 10;
         }
-
     }
     else {
         gameOver = true;
     }
 
+    
     if (gameOver) {
         alert("Game over! Score: " + score);
     }
     else {
-        setTimeout(function () { step(); }, stepInterval);
+        setTimeout(function () { step(); }, delay);
         drawWorld();
     }
-
 }
 
 window.addEventListener("load", function (event) {
