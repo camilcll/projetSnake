@@ -74,7 +74,8 @@ function loadLevel(data = null, level = 1) {
 
     //console.log(WORLD);
 
-    stepInterval = 500;
+    stepInterval =  data["delay"];
+    setTimeout(function () { step(); }, stepInterval);
 }
 
 function drawWorld() {
