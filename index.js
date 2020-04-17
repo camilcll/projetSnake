@@ -17,6 +17,8 @@ var key = null;
 var score = 0;
 var stepInterval = null;
 
+var audioCuisse = new Audio('media/cuisse.mp3');
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
@@ -147,6 +149,8 @@ function step() {
             while (WORLD[x][y] != EMPTY)
             WORLD[x][y] = FOOD;
             score += 10;
+            stepInterval /= 1.33;
+            audioCuisse.play();
         }
     }
     else {
