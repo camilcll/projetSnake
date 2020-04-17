@@ -164,7 +164,7 @@ function step() {
         document.getElementById("score").innerHTML = score;
         setTimeout(function () { 
             $("#gameOver").removeClass("d-flex").toggleClass("hidden");
-            $("#menu").removeClass("hidden").toggleClass("d-flex");}, 5000)
+            $("#menu").removeClass("hidden").toggleClass("d-flex");}, 2500)
     }
     else {
         drawWorld();
