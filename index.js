@@ -74,7 +74,7 @@ function loadLevel(data = null, level = 1) {
     //console.log(WORLD);
 
     stepInterval =  data["delay"];
-    setTimeout(function () { step(); }, 30);
+    setTimeout(function () { step(); }, stepInterval);
 }
 
 function drawWorld() {
@@ -164,8 +164,8 @@ function step() {
         document.getElementById("score").innerHTML = score;
     }
     else {
-        setTimeout(function () { step(); }, stepInterval);
         drawWorld();
+        setTimeout(function () { step(); }, stepInterval);
     }
 }
 
