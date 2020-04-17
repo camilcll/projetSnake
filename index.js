@@ -103,6 +103,7 @@ function drawWorld() {
 }
 
 function step() {
+    console.log("step");
     if (key == "ArrowUp") snakeDir = HAUT;
     if (key == "ArrowDown") snakeDir = BAS;
     if (key == "ArrowLeft") snakeDir = GAUCHE;
