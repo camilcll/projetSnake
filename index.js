@@ -171,7 +171,7 @@ function step() {
 
 document.getElementById("play").addEventListener("click", function (event) {
     $("#menu").removeClass("d-flex").toggleClass("hidden");
-    $("game").removeClass("hidden").toggleClass("d-flex");
+    $("#game").removeClass("hidden").toggleClass("d-flex");
     loadLevel();
 });
 
